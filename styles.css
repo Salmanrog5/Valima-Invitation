@@ -1,0 +1,387 @@
+@font-face{
+  font-family:'Priestacy';
+  src:url('Priestacy.otf') format('opentype');
+  font-weight:normal;
+  font-style:normal;
+  font-display:swap;
+}
+
+:root{
+  --blue:#0b3fb6;
+  --blue-deep:#062773;
+  --gold:#d6ad55;
+  --gold-light:#f2d894;
+  --paper:rgba(255,255,255,.92);
+  --ink:#18305f;
+}
+
+*{box-sizing:border-box}
+html{
+  scroll-behavior:smooth;
+  -webkit-text-size-adjust:100%;
+  text-size-adjust:100%;
+}
+body{
+  margin:0;
+  min-height:100vh;
+  overflow-x:hidden;
+  color:var(--ink);
+  font-family:Georgia,'Times New Roman',serif;
+  background-color:#082ca0;
+  background-image:url("assets/wedding-background.png");
+  background-size:cover;
+  background-position:center top;
+  background-repeat:no-repeat;
+  background-attachment:fixed;
+}
+.background-overlay{
+  position:fixed;
+  inset:0;
+  z-index:-2;
+  pointer-events:none;
+  background:linear-gradient(rgba(0,24,130,.08),rgba(0,18,95,.18));
+}
+
+.hidden{display:none!important}
+
+/* Decorations */
+.petal-layer,.glitter-layer{
+  position:fixed;
+  inset:0;
+  z-index:50;
+  overflow:hidden;
+  pointer-events:none;
+  opacity:0;
+  transition:opacity .5s ease;
+}
+.petal-layer.active,.glitter-layer.active{opacity:1}
+.petal{
+  position:absolute;
+  top:-12vh;
+  width:var(--w,12px);
+  height:calc(var(--w,12px)*1.45);
+  border-radius:75% 25% 70% 30%;
+  background:radial-gradient(circle at 35% 25%,#fff 0 15%,#bfd4ff 38%,#4f82ed 72%,#1e4fb9 100%);
+  box-shadow:0 0 8px rgba(255,255,255,.4);
+  opacity:.78;
+  animation:petalFall var(--duration,12s) linear var(--delay,0s) infinite;
+}
+.petal.white{
+  background:radial-gradient(circle at 35% 25%,#fff 0 22%,#f7f1dc 58%,#ddd1ac 100%);
+}
+@keyframes petalFall{
+  from{transform:translate3d(0,-15vh,0) rotate(0deg)}
+  to{transform:translate3d(var(--drift4,30px),115vh,0) rotate(430deg)}
+}
+.sparkle{
+  position:absolute;
+  width:var(--s,4px);
+  height:var(--s,4px);
+  border-radius:50%;
+  background:#fff7c7;
+  box-shadow:0 0 6px #fff,0 0 14px var(--gold-light);
+  animation:twinkle var(--twinkle,2s) ease-in-out var(--delay,0s) infinite alternate;
+}
+.sparkle.star{border-radius:0;transform:rotate(45deg)}
+@keyframes twinkle{
+  from{opacity:.15;transform:scale(.6)}
+  to{opacity:1;transform:scale(1.3)}
+}
+
+/* Shared 768px design width. Mobile scales naturally to screen width. */
+.cover,
+main#invitation{
+  width:min(768px,100%);
+  margin:0 auto;
+  position:relative;
+  z-index:2;
+}
+
+.cover{
+  min-height:100svh;
+  display:grid;
+  place-items:center;
+  padding:28px 18px;
+}
+
+.cover-card,
+.hero-card,
+.countdown-section,
+.event-card,
+.blessing{
+  background:linear-gradient(145deg,rgba(255,255,255,.95),rgba(235,242,255,.91));
+  border:1px solid rgba(214,173,85,.88);
+  box-shadow:0 16px 55px rgba(2,20,90,.35),inset 0 0 40px rgba(255,255,255,.45);
+  backdrop-filter:blur(3px);
+  -webkit-backdrop-filter:blur(3px);
+}
+
+.cover-card{
+  width:92%;
+  text-align:center;
+  border-radius:28px;
+  padding:48px 30px;
+}
+.arabic{
+  font-size:1.55rem;
+  color:var(--gold);
+  margin-bottom:14px;
+}
+.arabic.large{font-size:1.5rem}
+.eyebrow{
+  text-transform:uppercase;
+  letter-spacing:.14em;
+  font-size:.78rem;
+  color:#36588d;
+}
+.cover h1{
+  margin:8px 0 6px;
+  color:var(--blue-deep);
+  font-size:clamp(2.2rem,7vw,4rem);
+}
+.ornament{color:var(--gold);font-size:1.8rem;margin:10px 0}
+.cover h2,
+.couple-name{
+  font-family:'Priestacy',cursive!important;
+  font-weight:normal!important;
+  font-style:normal!important;
+  color:#6f8796!important;
+  -webkit-text-fill-color:#6f8796!important;
+  text-shadow:0 1px 0 rgba(255,255,255,.85),0 2px 6px rgba(19,49,99,.18);
+}
+.cover h2{
+  margin:8px 0;
+  font-size:clamp(2.6rem,8vw,4.6rem);
+  line-height:1;
+}
+.amp,.ampersand{
+  color:var(--gold);
+  font-size:2rem;
+}
+.primary-btn,.map-btn{
+  display:inline-block;
+  border:1px solid var(--gold-light);
+  background:linear-gradient(180deg,#174dc7,#092d90);
+  color:#fff;
+  text-decoration:none;
+  border-radius:999px;
+  padding:13px 24px;
+  font-weight:700;
+  letter-spacing:.05em;
+  box-shadow:0 8px 22px rgba(4,28,104,.25);
+  cursor:pointer;
+}
+.primary-btn{margin-top:24px;font-size:1rem}
+.tap-note{font-size:.8rem;color:#55709c;margin-top:10px}
+
+/* Open invitation */
+.topbar{
+  position:sticky;
+  top:0;
+  z-index:20;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:12px 18px;
+  background:rgba(3,32,112,.87);
+  color:white;
+  border-bottom:1px solid rgba(214,173,85,.65);
+  backdrop-filter:blur(10px);
+}
+.monogram{font-size:1.5rem;font-weight:700}
+.monogram span{color:var(--gold-light)}
+.audio-btn{
+  width:42px;height:42px;border-radius:50%;
+  border:1px solid var(--gold-light);
+  background:white;color:var(--blue-deep);
+  cursor:pointer;font-size:1rem
+}
+
+.hero{
+  padding:38px 18px 24px;
+}
+.hero-card{
+  width:100%;
+  text-align:center;
+  border-radius:26px;
+  padding:48px 26px;
+}
+.quote{
+  max-width:620px;
+  margin:8px auto 22px;
+  font-style:italic;
+  line-height:1.5;
+}
+.divider{
+  width:90px;height:2px;margin:22px auto;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+}
+.invite-text{max-width:620px;margin:auto;line-height:1.7}
+.couple-name{
+  margin:24px 0 5px;
+  font-size:clamp(3rem,8vw,5rem);
+  line-height:1;
+}
+.relation{margin:0 0 8px}
+.ampersand{margin:10px 0}
+
+.countdown-section,
+.blessing{
+  width:calc(100% - 36px);
+  margin:0 auto 28px;
+  padding:30px 18px;
+  text-align:center;
+  border-radius:22px;
+}
+.countdown{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:10px;
+  margin-top:18px;
+}
+.countdown div{
+  background:rgba(14,61,163,.07);
+  border:1px solid rgba(214,173,85,.3);
+  border-radius:14px;
+  padding:14px 6px;
+}
+.countdown strong{
+  display:block;
+  color:var(--blue-deep);
+  font-size:clamp(1.8rem,6vw,3rem);
+}
+.countdown span{
+  display:block;
+  margin-top:4px;
+  text-transform:uppercase;
+  font-size:.62rem;
+  letter-spacing:.08em;
+}
+
+.events{
+  width:calc(100% - 36px);
+  margin:0 auto 28px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+}
+.event-card{
+  text-align:center;
+  border-radius:22px;
+  padding:32px 16px 28px;
+}
+.event-icon{font-size:2rem;color:var(--gold)}
+.event-card h2{
+  margin:6px 0 12px;
+  color:var(--blue-deep);
+  font-size:2.2rem;
+}
+.event-card p{line-height:1.45}
+.date{font-weight:700}
+.time{font-weight:700;color:#234f96}
+.venue-box{
+  min-height:110px;
+  margin:20px 0;
+  padding:14px 8px;
+  border-top:1px solid rgba(214,173,85,.55);
+  border-bottom:1px solid rgba(214,173,85,.55);
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+.venue-box h3{margin:0;font-size:1.25rem;color:var(--blue-deep)}
+.venue-box p{margin-bottom:0}
+.map-btn{
+  padding:11px 14px;
+  font-size:.82rem;
+  white-space:nowrap;
+}
+
+.blessing h2{color:var(--blue-deep);font-size:1.8rem}
+footer{
+  text-align:center;
+  color:white;
+  padding:24px 18px 40px;
+  text-shadow:0 2px 10px rgba(0,0,0,.35);
+}
+footer p{font-size:1.25rem;margin-bottom:4px}
+
+/* Reveal animation */
+.reveal{
+  opacity:0;
+  transform:translateY(18px);
+  transition:opacity .55s ease,transform .55s ease;
+}
+.reveal.visible{
+  opacity:1;
+  transform:none;
+}
+
+/* Mobile: same overall two-card composition, scaled to phone */
+@media(max-width:600px){
+  .cover{padding:16px 10px}
+  .cover-card{width:96%;padding:34px 14px}
+  .cover h2{font-size:clamp(2.6rem,12vw,3.8rem)}
+  .hero{padding:24px 8px 16px}
+  .hero-card{padding:34px 12px}
+  .couple-name{font-size:clamp(2.9rem,13vw,4.3rem)}
+  .events{
+    width:calc(100% - 12px);
+    gap:7px;
+  }
+  .event-card{
+    padding:24px 6px 20px;
+    border-radius:16px;
+  }
+  .event-card h2{font-size:1.55rem}
+  .event-card p{font-size:.72rem}
+  .venue-box{min-height:92px;margin:14px 0;padding:10px 3px}
+  .venue-box h3{font-size:.95rem}
+  .map-btn{font-size:.66rem;padding:9px 7px}
+  .countdown-section,.blessing{width:calc(100% - 12px)}
+  .countdown{gap:5px}
+  .countdown div{padding:10px 2px}
+  .countdown span{font-size:.5rem}
+}
+
+
+/* Reliable invitation background on all browsers */
+html{
+  background:#082ca0;
+}
+.cover,
+main#invitation,
+.hero,
+.events,
+footer{
+  background-color:transparent !important;
+}
+
+@media (max-width:600px){
+  body{
+    background-image:url("assets/wedding-background.png") !important;
+    background-size:cover !important;
+    background-position:center top !important;
+    background-repeat:no-repeat !important;
+    background-attachment:scroll !important;
+  }
+}
+
+/* Valima invitation heading */
+.welcome-heading {color:#d6ad55; font-size:clamp(1.7rem,5vw,2.7rem); margin:0 0 16px;}
+
+.events.valima-only{grid-template-columns:minmax(0,1fr);max-width:440px;margin-left:auto;margin-right:auto}.valima-only .event-card{width:100%}.hero-card .invite-text{margin:14px auto;max-width:600px}
+
+/* Names stay on one line on desktop and mobile */
+.cover .cover-groom-name {font-size:clamp(23px,5.1vw,40px)!important;white-space:nowrap!important;letter-spacing:-.02em;}
+.hero-card .groom-name {font-size:clamp(21px,4.35vw,38px)!important;white-space:nowrap!important;letter-spacing:-.025em;}
+.topbar .monogram {font-size:clamp(14px,3.6vw,22px);white-space:nowrap;}
+@media(max-width:480px){
+ .cover .cover-groom-name{font-size:clamp(19px,5vw,25px)!important;}
+ .hero-card .groom-name{font-size:clamp(17px,4.2vw,22px)!important;}
+}
+
+/* Equal, bold names; keep groom on one line */
+.cover .cover-groom-name,.cover .cover-bride-name {font-family:'Priestacy',cursive!important;font-size:clamp(21px,5vw,38px)!important;font-weight:700!important;white-space:nowrap!important;letter-spacing:-.015em;max-width:100%;}
+.hero-card .groom-name,.hero-card .bride-name {font-family:'Priestacy',cursive!important;font-size:clamp(20px,4.3vw,36px)!important;font-weight:700!important;white-space:nowrap!important;letter-spacing:-.015em;max-width:100%;}
+@media(max-width:480px){.cover .cover-groom-name,.cover .cover-bride-name{font-size:clamp(18px,4.7vw,24px)!important}.hero-card .groom-name,.hero-card .bride-name{font-size:clamp(17px,4.1vw,22px)!important}}

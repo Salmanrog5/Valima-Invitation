@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#082ca0" />
+  <title>Valima Invitation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cormorant+Garamond:wght@500;600;700&family=Great+Vibes&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+
+
+
+</head>
+<body>
+  <div class="background-overlay"></div>
+  <div id="petalLayer" class="petal-layer" aria-hidden="true"></div>
+  <div id="glitterLayer" class="glitter-layer" aria-hidden="true"></div>
+
+  <section id="cover" class="cover">
+    <div class="cover-card">
+      <div class="arabic">بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ</div>
+      <p class="eyebrow">In the Name of Allah, The most Beneficent, The most merciful</p>
+      <h1>Valima Invitation</h1>
+      <div class="ornament">❦</div>
+      <h2 class="cover-groom-name">Syed Salmaan Ashraf</h2>
+      <span class="amp">&amp;</span>
+      <h2 class="cover-bride-name">Asfa Mahveen</h2>
+      <button id="openInvitation" class="primary-btn" type="button">Open Invitation</button>
+      <p class="tap-note">Tap to open the invitation</p>
+    </div>
+  </section>
+
+  <main id="invitation" class="hidden">
+    <nav class="topbar">
+      <div class="monogram">Salmaan <span>&amp;</span> Asfa</div>
+      <button id="audioToggle" class="audio-btn" aria-label="Toggle music">♫</button>
+    </nav>
+
+    <section class="hero reveal">
+      <div class="hero-card">
+        <p class="arabic large">بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ</p>
+        <h2 class="welcome-heading">Valima Invitation</h2>
+        <p class="invite-text">In the Name of Allah, The most Beneficent, The most merciful</p>
+        <p class="invite-text">Dear Friends and Family,</p>
+        <p class="invite-text">Syed Abu Saleh Asim &amp; Sadia Anjum request the honour of your gracious presence at the Valima Reception of their beloved son</p>
+        <h1 class="couple-name groom-name">Er. Syed Salmaan Ashraf</h1>
+        <p class="relation">ELV Engineer, UAE</p>
+        <div class="ampersand">&amp;</div>
+        <h1 class="couple-name bride-name">Asfa Mahveen</h1>
+        <p class="relation">Daughter of Mrs. &amp; Mr. Meer Abdul Majeed</p>
+      </div>
+    </section>
+
+    <section class="countdown-section reveal">
+      <p class="eyebrow">Counting down to our special day</p>
+      <div id="countdown" class="countdown">
+        <div><strong id="days">00</strong><span>Days</span></div>
+        <div><strong id="hours">00</strong><span>Hours</span></div>
+        <div><strong id="minutes">00</strong><span>Minutes</span></div>
+        <div><strong id="seconds">00</strong><span>Seconds</span></div>
+      </div>
+    </section>
+
+    <section class="events valima-only">
+      <article class="event-card reveal">
+        <div class="event-icon">✦</div>
+        <p class="eyebrow">Reception</p>
+        <h2>Valima</h2>
+        <p class="date">Monday, 30 November 2026</p>
+        <p class="time">Dinner from 7:30 PM onwards</p>
+        <div class="venue-box"><h3>Reception Venue</h3><p>Tap below for the location</p></div>
+        <a class="map-btn" href="https://maps.app.goo.gl/6kZ9oBxe6KhaGTZK7" target="_blank" rel="noopener noreferrer">View on Map</a>
+      </article>
+    </section>
+
+    <section class="blessing reveal">
+      <div class="ornament">❦</div>
+      <h2>With Best Wishes From</h2>
+      <p>Fayaz Ahmed, Afreen Fathima, Saad, Safaa &amp; Safwan</p>
+      <p class="arabic large">بَارَكَ اللهُ لَكُمَا وَبَارَكَ عَلَيْكُمَا وَجَمَعَ بَيْنَكُمَا فِي خَيْرٍ</p>
+    </section>
+    <footer><p>Syed Salmaan Ashraf &amp; Asfa Mahveen</p><small>30 November 2026</small></footer>
+  </main>
+
+  <audio id="bgAudio" loop preload="metadata" playsinline webkit-playsinline>
+    <source src="assets/wedding-nasheed.mp3" type="audio/mpeg" />
+  </audio>
+
+  <script src="script.js"></script>
+</body>
+</html>
